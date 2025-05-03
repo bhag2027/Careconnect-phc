@@ -1,0 +1,230 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>health care</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/assets/img/favicon.png" rel="icon">
+  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MyResume - v4.3.0
+  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="login" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Login</span></a></li>
+        <li><a href="registration" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Registration</span></a></li>
+         <li><a href="comparison" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Comparison</span></a></li>
+        <!-- <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+        <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li> -->
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center" >
+    <div class="container" data-aos="zoom-in" data-aos-delay="100" >
+     
+
+  <h2><span>Comparison </span>  </h2>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="background-color:white;  width:100%;max-width:600px; height:400px;"  ></canvas>
+
+<script>
+
+var xValues = ["RSA","ECC"];
+var yValues = [1.0055625438690186,1.2187969207763672];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "red",
+      borderColor: "brown",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max:2}}],
+    }
+  }
+});
+</script>
+
+   
+</div>
+</section>
+    <!-- ======= Contact Section ======= -->
+    <!-- <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+
+        <div class="row mt-1">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+  <!-- End Contact Section -->
+
+
+
+
+{% include 'footer.html' %}
+
+
+
+
+
+
+<!-- 
+  <form method="post">
+  <center style="background-color: #00000050 ; color: white; "><h1>Registration Form</h1>
+  <table class="table" style="width:500px ; color: white; ">
+
+    <tr>
+      <th>Hospital</th>
+      <td><input type="text" name="Hospitalname" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+    </tr>
+    <tr>
+      <th>Place</th>
+      <td><input type="text" name="Place" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+    </tr>
+    <tr>
+      <th>landmark</th>
+      <td><input type="text" name="landmark" class="form-control" style="background-color: #00000080 ; color: #fff">
+      </td>
+    </tr>
+    <tr>
+      <th>latitude</th>
+        <td><input type="text" name="latitude" id="lat" class="form-control" style="background-color: #00000080 ; color: #fff" readonly="" required=""></td>
+    </tr>
+    <tr>
+      <th>longitude</th>
+      <td><input type="text" name="longitude" id="lon" class="form-control" style="background-color: #00000080 ; color: #fff" readonly="" required=""></td>
+      <td><a onclick="myFunction();" class="btn btn-info">View Map</a></td>
+    </tr>
+    <tr>
+      <th>phone</th>
+      <td><input type="text" name="phone" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+    </tr>
+    <tr>
+      <th>email</th>
+      <td><input type="email" name="email" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+    </tr>
+        <tr>
+      <th>Username</th>
+      <td><input type="text" name="Username" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <td><input type="password" name="password" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-success"></td>
+    </tr>
+  </table>
+  <div id="dvMap" style="width: 600px; height: 400px"></div>
+  </center>
+</form> -->
+

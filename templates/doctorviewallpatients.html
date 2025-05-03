@@ -1,0 +1,138 @@
+{% include 'doctor_header.html' %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 900px;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        text-align: center;
+    }
+
+    h3 {
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #17a2b8;
+        color: white;
+        font-size: 16px;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    td {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 8px 15px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        padding: 8px 12px;
+        font-size: 14px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    input[type="date"] {
+        padding: 6px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 180px;
+        margin-right: 5px;
+    }
+</style>
+
+<center>
+    <section id="hero" class="d-flex flex-column justify-content-center">
+        <div class="container" data-aos="zoom-in" data-aos-delay="100">
+            <p style="color: white; font-size: 40px; font-weight: bold;">REMOTE CONSULTATION LIST</p><br>
+
+            <!-- Search Form -->
+            <form method="GET">
+                <label for="search_date" style="color:white; font-weight:bold;">Search by Date:</label>
+                <input type="date" id="search_date" name="search_date" value="{{ search_date }}">
+                <button type="submit" class="btn-primary">Search</button>
+            </form>
+
+            {% if data['no_appointments'] %}
+                <h3>No Remote Consultation Appointments Found</h3>
+            {% else %}
+                <table>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Phone</th>
+                        <th>DOB</th>
+                        <th>Place</th>
+                        <th>Appointment Date</th>
+                        <th>Time</th>
+                        <th>Chat</th> <!-- Chat button column -->
+                    </tr>
+
+                    {% for row in data['appointments'] %}
+                        <tr>
+                            <td>{{ row['first_name'] }} {{ row['last_name'] }}</td>
+                            <td>{{ row['phone'] }}</td>
+                            <td>{{ row['dob'] }}</td>
+                            <td>{{ row['place'] }}</td>
+                            <td>{{ row['appointment_date'] }}</td>
+                            <td>{{ row['time'] }}</td>
+                            <td>
+                                <a href="doctor_chat?name={{ row['first_name'] }} {{ row['last_name'] }}&id={{ row['login_id'] }}" 
+                                   class="btn-success">Chat</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+    </section>
+</center>
+
+{% include 'footer.html' %}

@@ -1,0 +1,135 @@
+{% include 'hospitals_header.html' %}
+
+<style type="text/css">
+    th,tr{
+        padding: 20px
+
+    }
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 1000px;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#737373;
+  color: white;
+}
+ 
+</style>
+<center>
+<center>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span  data-typed-items="Ambulance" style="font-family:bold;color:white;font-size:50px">AMBULANCE</span></p>
+
+	<!-- <h2>Ambulance</h2> -->
+
+<form method="post">
+
+	{% if data['up'] %}
+	<table  class="table"   style="width: 700px; background-color: rgba(0, 0, 0, 0.7);color:white" >
+		<tr>
+			<th>Ambulance</th>
+			<td><input type="text" required="" name="name" class="form-control" style="background-color: #00000080 ; color: #fff" value={{data['up'][0]['Ambulance']}}></td>
+			
+		</tr>
+		<tr>
+			<th>Details</th>
+			<td><input type="textarea" required="" name="detail" class="form-control" style="background-color: #00000080 ; color: #fff" value={{data['up'][0]['Details']}}></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" maxlength="10" pattern="[0-9]{10}" required name="phone" class="form-control" style="background-color: #00000080 ; color: #fff" value={{data['up'][0]['Phone']}}></td>
+		</tr>
+		<tr>
+			<th>RegNumber</th>
+			<td><input type="text" maxlength="6" pattern="[0-9]{6}" required name="reg" class="form-control" style="background-color: #00000080 ; color: #fff" value={{data['up'][0]['Regnum']}}></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="update" class="btn btn-primary" value="ADD"></td>
+
+		</tr>
+	</table>
+
+	{% else %}
+				<table  class="table"  style="width: 700px; background-color: rgba(0, 0, 0, 0.7);color:white"  >
+					<tr>
+						<th>Ambulance</th>
+						<td><input type="text" required="" name="name" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+						
+					</tr>
+					<tr>
+						<th>Details</th>
+						<td><input type="textarea" required="" name="detail" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+							<tr>
+			<th>Phone</th>
+			<td><input type="text" maxlength="10" pattern="[0-9]{10}" required name="phone" class="form-control" style="background-color: #00000080 ; color: #fff" ></td>
+		</tr>
+		<tr>
+			<th>RegNumber</th>
+			<td><input type="text" maxlength="6" pattern="[0-9]{6}" required name="reg" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-primary" value="ADD"></td>
+
+		</tr>
+		</table>
+			
+				{% endif %}
+</form>
+
+
+
+
+	
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+<h1>AMBULANCE</h1>
+
+<table class="table" style="width: 500px;  "  id="customers">
+		<tr>
+			<th>Slno</th>
+			<th>Ambulance</th>
+			<th>Details</th>
+			<th>Phone</th>
+			<th>RegNumber</th>
+			
+		</tr>
+		{% for row in data['lab'] %}
+		<tr>
+			<td>{{ loop.index}}</td>
+			<td>{{ row['Ambulance'] }}</td>
+			<td>{{ row['Details'] }}</td>
+			<td>{{ row['Phone'] }}</td>
+			<td>{{ row['Regnum'] }}</td>
+			<td><a href="?action=update&aid={{row['Ambulance_id']}}" class="btn btn-warning">UPDATE</a></td>
+			<td><a href="?action=delete&aid={{row['Ambulance_id']}}" class="btn btn-warning">DELETE</a></td>
+		</tr>
+		{% endfor %}
+	</td>
+</tr>
+</table>
+
+
+</center>
+{% include 'footer.html' %}

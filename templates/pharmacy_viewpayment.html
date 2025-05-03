@@ -1,0 +1,33 @@
+{% include 'pharmacy_header.html' %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span  data-typed-items="Payment" style="font-family:bold;color:white;font-size:50px">PAYMENT</span></p>
+
+	
+
+<table class="table" style="width: 900px; background-color: rgba(0, 0, 0, 0.7);color:white">
+	<tr style="background-color:#3498DB">
+	<th>SNo</th>
+	<th>Amount</th>
+	<th>Date</th>
+
+	</tr>
+	{% for row in data['view'] %}
+	<tr>
+		<td>{{ loop.index }}</td>
+		<td>{{ row['amount'] }}</td>
+		<td>{{ row['date'] }}</td>
+		
+	</tr>
+	{% endfor %}
+</table>
+
+	
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+{% include 'footer.html' %}

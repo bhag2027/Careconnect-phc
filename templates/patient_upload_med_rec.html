@@ -1,0 +1,46 @@
+{% include 'patient_header.html' %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	</div>
+</section>
+
+	  <!-- <h1></h1> -->
+	  <p><span class="typed" data-typed-items="Upload Medical Reports of {{data['name']}}"></span></p>
+
+	
+	<form method="post" enctype="multipart/form-data">
+	
+	<table border="2"  class="table" style="width: 500px; ;" >
+		<tr>
+			<th>File</th>
+			<td><input type="File" class="form-control" name="file"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="Submit" class="btn btn-primary" name="submit"></td>
+		</tr>
+	</table>
+	</form>
+
+	
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+	<h1 align="center">PATIENT :{{data['name']}} MEDICAL REPORTS</h1>
+	<table class="table" align="center">
+		<tr>
+			<th>SL.NO</th>
+			<th>FILE</th>
+		</tr>
+	
+	{% for row in data['upload'] %}
+	<tr>
+		<td align="center">{{loop.index}}</td>
+		<td align="center"><a href="/{{row['file']}}"><img src="/{{row['file']}}"></a></td>
+	</tr>
+	{% endfor %}
+</table>
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,76 @@
+{% include 'admin_header.html' %}
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .hospital-card {
+    background-color: rgba(34, 46, 37, 0.7);
+    color: white;
+    border-radius: 15px;
+    width: 600px;  /* Increased width */
+    padding: 5px;  /* Reduced padding for compact height */
+    box-shadow: 0 4px 8px rgba(14, 223, 202, 0.2);
+  }
+
+  .hospital-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;  /* Reduced spacing */
+  }
+
+  .hospital-card h5 {
+    margin-bottom: 8px;
+  }
+
+  .hospital-card p {
+    margin-bottom: 5px;  /* Compact text spacing */
+    font-size: 14px;  /* Smaller text size for better readability */
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 8px;  /* Reduced space above button */
+  }
+
+  .btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+</style>
+
+<section id="hero" class="d-flex flex-column justify-content-center">
+  <div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h1>About</h1>
+    <p><span data-typed-items="HOSPITALS" style="font-family:bold;color:white;font-size:20px">Koduvally Community Health Centre (CHC) is a healthcare facility located in Koduvally. As a Community Health Centre, it serves as a crucial point of primary healthcare for the local population, offering a range of medical services to address common health concerns and promote community well-being. </span></p>
+
+    <div class="card-container">
+      {% for row in data['hospitals'] %}
+      <div class="hospital-card">
+        <img src="/{{ row['image'] }}" alt="Hospital Image">
+        <h5>{{ row['hospital_name'] }}</h5>
+       
+     
+        <a href="admin_view_doctor?hid={{ row['hospital_id'] }}" class="btn btn-info">View Doctors</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %}

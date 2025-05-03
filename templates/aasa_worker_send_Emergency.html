@@ -1,0 +1,44 @@
+{% include 'aasha_worker_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span data-typed-items="Upload Medical Reports of {{data['name']}}" style="font-family:bold;color:white;font-size:50px">MESSAGE</span></p>
+
+	
+	<form method="post" enctype="multipart/form-data">
+	
+	<table border="2"  class="table" style="width: 600px; background-color: rgba(0, 0, 0, 0.7);color:white"  >
+		<tr>
+			<th>Message</th>
+			<td><input type="text" class="form-control" name="message" required=""></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="Submit" class="btn btn-primary" name="submit"></td>
+		</tr>
+	</table>
+	</form>
+
+	
+</div>
+</section><!-- End Hero -->
+
+<!-- <main id="main">
+	<h1 align="center">PATIENT :{{data['name']}} MEDICAL REPORTS</h1>
+	<table class="table" align="center"  style="width: 900px; background-color: rgba(0, 0, 0, 0.7);color:white">
+		<tr>
+			<th>SL.NO</th>
+			<th>FILE</th>
+		</tr>
+	
+	{% for row in data['upload'] %}
+	<tr>
+		<td align="center">{{loop.index}}</td>
+		<td align="center"><a href="/{{row['file']}}"><img src="/{{row['file']}}"></a></td>
+	</tr>
+	{% endfor %}
+</table> -->
+
+
+{% include 'footer.html' %}

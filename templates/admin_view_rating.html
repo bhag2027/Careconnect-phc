@@ -1,0 +1,150 @@
+{% include 'admin_header.html' %}
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+
+  #hero {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 80px 0;
+  }
+
+  #hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  #hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  tr:hover {
+    background-color: #e0e0e0;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+
+  .btn-warning {
+    background-color: #ffc107;
+    color: #fff;
+  }
+
+  .btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+</style>
+
+<head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span data-typed-items="View Rating" style="font-family:bold;color:white;font-size:50px">RATING</span></p>
+	 
+	  <form method="post">
+		{% if data['rate'] %}
+		  <table class="table" style="width: 1000px; background-color: rgba(0, 0, 0, 0.7);color:white">
+			<tr  style="background-color:#3498DB">
+			  <th>sl no</th>
+			  <th>rate</th>
+			  <th>patient name</th>
+			</tr>
+			{% for i in data['rate'] %}
+			  <tr>
+				<td>{{ loop.index }}</td>
+				{% if i['rate'] == "5.0" %}
+				  <td>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+				  </td>
+				{% elif i['rate'] == "4.0" %}
+				  <td>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+				  </td>
+				{% elif i['rate'] == "3.0" %}
+				  <td>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+				  </td>
+				{% elif i['rate'] == "2.0" %}
+				  <td>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+				  </td>
+				{% elif i['rate'] == "1.0" %}
+				  <td>
+					<span class="fa fa-star checked"></span>
+				  </td>
+				{% endif %}
+<!-- 				<td>{{ i['review'] }}</td>
+ -->				<td>{{ i['first_name'] }}</td>
+			  </tr>
+			{% endfor %}
+		  </table>
+		{% else %}
+		  <h1 style="color:white">NO RATINGS</h1>
+		{% endif %}
+	  </form>
+</div></section>	  
+</section><!-- End Hero -->
+
+<main id="main">
+{% include 'footer.html' %}

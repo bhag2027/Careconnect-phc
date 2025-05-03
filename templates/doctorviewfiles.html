@@ -1,0 +1,33 @@
+{% include 'doctor_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span  data-typed-items="View Medical Records">MEDICAL RECORDS</span></p>
+
+	<table  style="width: 900px; background-color: rgba(0, 0, 0, 0.7);color:white" ">
+		<tr>
+			<th>Sno</th>
+			<th>Uploaded Date</th> 
+			
+		</tr>
+		{% for row in data['files'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['date_time'] }}</td>
+			<td><a class="btn btn-primary" href="?action=request&pid={{ data['pid'] }}&mid={{ row['medical_record_id'] }}">Request</td>
+			<!-- <td><a href="download?mid={{ row['medical_record_id'] }}">Download</a></td> -->
+		</tr>
+
+		{% endfor %}
+
+	</table>
+
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+{% include 'footer.html' %}

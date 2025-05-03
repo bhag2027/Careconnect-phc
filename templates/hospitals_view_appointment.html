@@ -1,0 +1,98 @@
+{% include 'hospitals_header.html' %}
+<style>
+.checked {
+  color: orange;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 2200px;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+}
+</style>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span  data-typed-items="View Appointment" style="font-family:bold;color:white;font-size:50px">APPOINTMENT</span></p>
+
+	
+
+<table class="table" style="width: 900px; background-color: rgba(0, 0, 0, 0.7);color:white">
+	<tr style="background-color:#3498DB">
+	<th>SNo</th>
+	<th>Doctor name</th>
+	<th>Patient name</th>
+	<th>Appointment date</th>
+	<th>Time</th>
+	<th>Status</th>
+	</tr>
+	{% for row in data['appoinment'] %}
+	<tr>
+		<td>{{ loop.index }}</td>
+		<td>{{ row['doctor_name'] }}</td>
+		<td>{{ row['patient_name'] }}</td>
+		<td>{{ row['appointment_date'] }}</td>
+		<td>{{ row['time'] }}</td>
+		<td>{{ row['status'] }}</td>
+		<!-- {% if row['status']=='pending' %}
+		<td><a href="?action=accept&appointment_id={{row['appointment_id']}}" class="btn btn-info">ACCEPT</a></td>
+		<td><a href="?action=reject&appointment_id={{row['appointment_id']}}" class="btn btn-danger">REJECT</a></td>
+		{% endif %} -->
+	</tr>
+	{% endfor %}
+</table>
+
+	
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+{% include 'footer.html' %}
