@@ -1,0 +1,89 @@
+{% include 'user_header.html' %}
+
+<style>
+    .background-div {
+        background: url('/static/images/fly1.jpg');
+        height: 100px;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .card-view {
+        background: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto;
+        width: 90%;
+    }
+
+    .card-view th {
+        background-color: #343a40;
+        color: white;
+        padding: 12px;
+        text-align: left;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .card-view td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .card-view tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .card-view .btn-success {
+        background-color: #28a745;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .card-view .btn-success:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="background-div"></div>
+
+<center>
+    <form method="post">
+        <h2>Complaints</h2>
+        <table class="table card-view">
+            <tr>
+                <th>Complaint</th>
+                <td><input type="text" name="com" required class="form-control"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" class="btn btn-success" name="submit" value="ADD">
+                </td>
+            </tr>
+        </table>
+
+        <h2>View Complaints</h2>
+        <table class="table card-view">
+            <tr>
+                <th>#</th>
+                <th>Date & Time</th>
+                <th>Complaint</th>
+                <th>Reply</th>
+            </tr>
+            {% for row in data['view'] %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ row['date_time'] }}</td>
+                <td>{{ row['complaint'] }}</td>
+                <td>{{ row['reply'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</center>
+
+{% include 'footer.html' %}

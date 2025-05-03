@@ -1,0 +1,47 @@
+{% include 'patient_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span class="typed" data-typed-items="HOSPITALS"></span></p>
+
+	
+		
+		<table class="table" style="width: 700px; " >
+			<tr >
+				<th>Sno</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+			
+			</tr>
+	
+			{% for row in data['sh'] %}
+	
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['ftime'] }}</td>
+				<td>{{ row['ttime'] }}</td>
+				
+	
+		
+				
+				<td><a href="patient_make_appoinment?did={{ row['doctor_id'] }}" class="btn btn-info">Make Appoinment</a></td>
+	
+			
+
+	
+			</tr>
+	
+			{% endfor %}
+	
+		</table>
+	
+	  
+	</div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+{% include 'footer.html' %}

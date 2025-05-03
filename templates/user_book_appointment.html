@@ -1,0 +1,109 @@
+{% include 'user_header.html' %}
+
+<style type="text/css">
+    th, tr {
+        padding: 20px;
+    }
+
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 1000px;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #737373;
+        color: white;
+    }
+</style>
+
+<center>
+<section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+        <p>
+            <span data-typed-items="Laboratory" 
+                  style="font-family:bold;color:white;font-size:50px">
+                  Appointment
+            </span>
+        </p>
+
+        <form method="post">
+            <table class="table" style="width: 700px; background-color: rgba(0, 0, 0, 0.7); color:white">
+                <tr>
+                    <td colspan="5" align="center">
+                        <select name="type" class="form-control">
+                            <option value="Face To Face">Face To Face</option>
+                            <option value="Remote Consultation">Remote Consultation</option>
+                        </select>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <th>Date</th>
+                    <td>
+                        <input type="date" name="date" required="" 
+                               class="form-control" value="{{  date }}"
+                               style="background-color: #00000080; color: #fff">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Time</th>
+                    <td>
+                        <input type="time" required="" name="time" 
+                               class="form-control" 
+                               style="background-color: #00000080; color: #fff">
+                    </td>
+                </tr> -->
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="submit" 
+                               class="btn btn-primary" value="ADD">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</section>
+
+<main id="main">
+
+<h1>Appointments</h1>
+
+<table class="table" style="width: 500px;" id="customers">
+    <tr>
+        <th>Slno</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Token Number</th>
+    </tr>
+
+    {% for row in data['view'] %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ row['appointment_date'] }}</td>
+        <td>{{ row['time'] }}</td>
+        <td>{{ row['token_no'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</center>
+
+{% include 'footer.html' %}

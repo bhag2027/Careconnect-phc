@@ -1,0 +1,138 @@
+{% include 'hospitals_header.html' %}
+<style type="text/css">
+    th,tr{
+        padding: 20px
+
+    }
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 1000px;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#737373;
+  color: white;
+}
+ 
+</style>
+<center>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span  data-typed-items="Blood Donation Camp" style="font-family:bold;color:white;font-size:50px">BLOOD DONATION CAMP</span></p>
+
+	
+<form method="post">
+{% if data['up'] %}
+	<table  class="table" style="width: 700px; background-color: rgba(0, 0, 0, 0.7);color:white" >
+        <tr>
+            <th>Place</th>
+            <td><input type="text" required="" name=place class="form-control" style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['place']}}"></td>
+        </tr>
+        <tr>
+            <th>date</th>
+            <td><input type="date" required="" name="date" id="date"  class="form-control" value="{{data['up'][0]['date']}}" ></td>
+        </tr>
+		<tr>
+			<th>From Time</th>
+			<td><input type="time" required="" name="ft" class="form-control"  value="{{data['up'][0]['fromtime']}}"></td>
+			
+		</tr>
+		<tr>
+			<th>To Time</th>
+			<td><input type="time" required="" name="tt" class="form-control" value="{{data['up'][0]['tofrom']}}" ></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="update" class="btn btn-primary" value="ADD"></td>
+
+		</tr>
+	</table>
+{% else %}
+	<table  class="table" style="width: 700px; background-color: rgba(0, 0, 0, 0.7);color:white" >
+        <tr>
+            <th>Place</th>
+            <td><input type="text" required="" name=place class="form-control" style="background-color: #00000080 ; color: #fff" ></td>
+        </tr>
+        <tr>
+            <th>date</th>
+            <td><input type="date" required="" name="date" id="date"  class="form-control" ></td>
+        </tr>
+		<tr>
+			<th>From Time</th>
+			<td><input type="time" required="" name="ft" class="form-control"  ></td>
+			
+		</tr>
+		<tr>
+			<th>To Time</th>
+			<td><input type="time" required="" name="tt" class="form-control"  ></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-primary" value="ADD"></td>
+
+		</tr>
+	</table>
+{% endif %}
+</form>
+</div>
+</section><!-- End Hero -->
+
+
+<main id="main">
+
+	<center>
+<h2>BLOOD DONATION CAMP</h2>
+	<table class="table" style="width:900px;" id="customers" >
+		<tr >
+			<th>Sno</th>
+			<th>place</th>
+			<th>date</th>
+			<th>fromtime</th>
+			<th>tottime</th>
+		
+			<!-- <th>Symptoms</th>
+			<th>Date_time</th> -->
+		</tr>
+		{% for row in data['view'] %}	
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['place'] }}</td>
+			<td>{{row['date']}}</td>
+			<td>{{row['fromtime']}}</td>
+			<td>{{row['tofrom']}}</td>
+			<!-- <td>{{ row['symptoms'] }}</td>
+			<td>{{ row['date_time'] }}</td> -->
+
+			<td><a class="btn btn-success"  href="?action=update&b_id={{row['blooddonation_id']}}">Update</a></td>
+			<td><a class="btn btn-danger"  href="?action=delete&b_id={{row['blooddonation_id']}}">delete</a></td>
+			
+		</tr>
+
+		{% endfor %}
+
+	</table>
+	</center>
+ <script>
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById('date').setAttribute('min', today);
+</script>
+    {% include 'footer.html' %}

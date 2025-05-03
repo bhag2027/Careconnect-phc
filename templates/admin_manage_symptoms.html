@@ -1,0 +1,135 @@
+{% include 'doctor_header.html' %}
+<style type="text/css">
+    th,tr{
+        padding: 20px
+
+    }
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 1000px;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#737373;
+  color: white;
+}
+ 
+</style>
+<center>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span  data-typed-items="SYMPTOMS" style="font-family:bold;color:white;font-size:50px">SYMPTOMS</span></p>
+
+	
+<form method="post">
+{% if data['up'] %}
+	<table  class="table" style="width: 600px; background-color: rgba(0, 0, 0, 0.7); color:white">
+		<h2>UPDATE</h2>
+		<tr>
+			<th style="color:white">Symptoms</th>
+			<td><input type="text" name="sym" class="form-control" required style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['symptoms']}}"></td>
+		</tr>
+
+		<!-- <tr>
+			<th>symptoms</th>
+			<td><input type="text" name="sym" class="form-control" required style="background-color: #00000080 ; color: #fff"></td>
+		</tr>
+
+		<tr>
+			<th>date_time</th>
+			<td><input type="date" name="dt" class="form-control" id="date" required style="background-color: #00000080 ; color: #fff"></td>
+		</tr> -->
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="update" class="btn btn-warning"></td>
+		</tr>
+	</table>
+
+
+{% else %}
+
+
+	<table  class="table" style="width: 600px; background-color: rgba(0, 0, 0, 0.7); color:white"
+		
+		<tr>
+			<th style="color:white">Symptoms</th>
+			<td><input type="text" name="sym" class="form-control"  required style="background-color: #00000080 ; color: #fff"></td>
+		</tr>
+
+		<!-- <tr>
+			<th>symptoms</th>
+			<td><input type="text" name="sym" class="form-control" required style="background-color: #00000080 ; color: #fff"></td>
+		</tr>
+
+		<tr>
+			<th>date_time</th>
+			<td><input type="date" name="dt" class="form-control" id="date" required style="background-color: #00000080 ; color: #fff"></td>
+		</tr> -->
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-warning"></td>
+		</tr>
+	</table>
+
+	{% endif %}
+
+</form>
+	
+</center>
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+	<center>
+<h2>DISEASE AND SYMPTOMS</h2>
+	<table class="table" style="width:900px;" id="customers" >
+		<tr >
+			<th>Sno</th>
+			<th>Symptoms</th>
+		
+			<!-- <th>Symptoms</th>
+			<th>Date_time</th> -->
+		</tr>
+		{% for row in data['symptoms'] %}	
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['symptoms'] }}</td>
+			<!-- <td>{{ row['symptoms'] }}</td>
+			<td>{{ row['date_time'] }}</td> -->
+
+			<td><a class="btn btn-success" href="?action=update&symptoms_id={{row['symptoms_id']}}&disease_id={{row['disease_id']}}">Update</a></td>
+			<td><a class="btn btn-danger" href="?action=delete&symptoms_id={{row['symptoms_id']}}&disease_id={{row['disease_id']}}">delete</a></td>
+			
+		</tr>
+
+		{% endfor %}
+
+	</table>
+	</center>
+
+
+	<script>
+        // Your JavaScript code for date validation
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById('date').setAttribute('max', today);
+    </script>
+
+
+{% include 'footer.html' %}

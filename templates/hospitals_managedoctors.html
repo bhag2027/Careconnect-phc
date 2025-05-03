@@ -1,0 +1,304 @@
+{% include 'hospitals_header.html' %}
+<center>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span  data-typed-items="Manage Doctor" style="font-family:bold;color:white;font-size:50px">MANAGE DOCTOR</span></p>
+
+	
+
+<form method="post" enctype="multipart/form-data">
+
+{% if data['up'] %}
+	<table  class="table" style="width: 600px; background-color: rgba(0, 0, 0, 0.7);color:white" >
+		<tr>
+			<th>First name</th>
+			<td><input type="text" name="fname" class="form-control" pattern="[A-Za-z]+$" required style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['first_name']}}"></td>
+		</tr>
+		<tr>
+			<th>last name</th>
+			<td><input type="text" name="lname" class="form-control" pattern="[A-Za-z]+$" required style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['last_name']}}"></td>
+		</tr>
+		<tr>
+			<th>place</th>
+			<td><input type="text" name="place" class="form-control" pattern="[A-Za-z]+$" required style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['place']}}"></td>
+		</tr>
+		<tr>
+			<th>phone</th>
+			<td><input type="text" name="phone" class="form-control"  pattern="[0-9]{10}" required style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['phone']}}"></td>
+		</tr>
+		<tr>
+			<th>email</th>
+			<td><input type="email" name="email" class="form-control" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['email']}}"></td>
+		</tr>
+		<tr>
+			<th>qualification</th>
+
+			<td><input type="text" name="qualification" class="form-control" style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['qualification']}}"></td>
+		</tr>
+		<tr>
+			<th>Department</th>
+			<td><select name="dep" class="form-control">
+					
+				<option value="department_id">General Medicine</option>
+			
+			</select></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="update" class="btn btn-primary" value="Register"></td>
+
+		</tr>
+	</table>
+
+
+{% else %}
+
+
+
+
+				<table  class="table" style="width: 600px; background-color: rgba(0, 0, 0, 0.7);color:white" >
+					<tr>
+						<th>First name</th>
+						<td><input type="text" name="fname" class="form-control" pattern="[A-Za-z]+$" required style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<th>last name</th>
+						<td><input type="text" name="lname" class="form-control" pattern="[A-Za-z]+$" required style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<th>place</th>
+						<td><input type="text" name="place" class="form-control" pattern="[A-Za-z]+$" required style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<th>phone</th>
+						<td><input type="text" name="phone" class="form-control"  pattern="[0-9]{10}" required style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<th>email</th>
+						<td><input type="email" name="email" class="form-control" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<th>Photo</th>
+						<td><input type="file" name="photo" class="form-control" required style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<th>qualification</th>
+
+						<td><input type="text" name="qualification" class="form-control" style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+							<tr>
+			<th>Department</th>
+			<td><select name="dep" class="form-control">
+				<option value="department_id">General Medicine</option>
+			</select></td>
+		</tr> 
+					<tr>
+						<th>Username</th>
+						<td><input type="text" name="uname" class="form-control" required pattern="[0-9a-zA-Z]{0,30}" style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<th>Password</th>
+						<td><input type="Password" name="pword" class="form-control"  required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" title="Password must have at least one uppercase letter, one lowercase letter, one digit, and be at least 8 characters long." style="background-color: #00000080 ; color: #fff"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-primary" value="Register"></td>
+
+					</tr>
+				</table>
+			
+{% endif %}
+</form>
+
+
+
+
+	
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+<h1>DOCTORS IN OUR HOSPITAL</h1>
+
+<!-- <table class="table" style="width: 500px;  ">
+		<tr>
+			<th>Sno</th>
+			
+			
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th>Qualification</th>
+		</tr>
+		{% for row in data['doctors'] %}
+		<tr>
+			<td>{{ loop.index}}</td>
+			
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['place'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td>{{ row['email'] }}</td>
+			<td>{{ row['qualification'] }}</td> 
+			<td><a href="?action=update&did={{row['doctor_id']}}">Update</a></td>
+			<td><a href="?action=delete&did={{row['doctor_id']}}">Delete</a></td>
+			<td><a href="hospital_view_rating?did={{row['doctor_id']}}" class="btn btn-primary">VIEW RATINGS</a></td>
+			<td><a href="hospital_manage_shedule?did={{row['doctor_id']}}" class="btn btn-primary">MANAGE SCHEDULE</a></td>
+		</tr>
+		{% endfor %}
+	</td>
+</tr>
+</table> -->
+
+<div class="card-container">
+	{% for i in data['doctors'] %}
+  <div class="card">
+    <img src="/{{i['image']}}" class="card-image">
+    <div class="card-details">
+      <h3>{{ i['first_name'] }}</h3>
+      <p><strong>Place:</strong> {{ i['place'] }}</p>
+      <p><strong>Phone:</strong> {{ i['phone'] }}</p>
+      <p><strong>Email:</strong> {{ i['email'] }}</p>
+      <p><strong>Qualification:</strong> {{ i['qualification'] }}</p>
+
+      <div style="margin-top: 10px;">
+        <a href="?action=update&did={{ i['doctor_id'] }}" class="btn btn-success"><i class="fas fa-edit"></i> Update</a>
+        <a href="?action=delete&did={{ i['doctor_id'] }}&lid={{ i['login_id'] }}" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+        
+        <br><br>
+        
+        <!-- ✅ Doctor Leave Management -->
+        {% if i['leave_status'] == 'on_leave' %}
+          <button class="btn btn-warning" disabled>On Leave: {{ i['leave_date'] }}</button>
+        {% else %}
+		<button class="btn btn-warning" onclick="showLeaveForm({{ i['doctor_id'] }})"><i class="fas fa-calendar-times"></i> Mark Leave</button>
+
+		<!-- Leave Date Input Form (Initially Hidden) -->
+		<!-- Leave Date Input Form (Initially Hidden) -->
+<form id="leave-form-{{ i['doctor_id'] }}" method="post" style="display:none; margin-top:10px;">
+    <input type="text" name="doctor_id" value="{{ i['doctor_id'] }}" style="display:none;" class="form-control" required>
+    <input type="date" name="leave_date"  class="form-control" required>
+    <button type="submit" name="mmm" class="btn btn-primary" style="margin-top:5px;">Submit Leave</button>
+</form>
+
+        {% endif %}
+
+        <br>
+        <a href="hospital_manage_shedule?did={{ i['doctor_id'] }}" class="btn btn-info" style="margin-top: 10px;"><i class="fas fa-calendar-alt"></i> MANAGE SCHEDULE</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+  </div>
+  
+
+<style type="text/css">
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px;
+  width: 250px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.card-details {
+  margin-top: 10px;
+}
+
+.card h3 {
+  margin: 0;
+}
+
+.card p {
+  margin: 5px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.btn i {
+  margin-right: 5px;
+}
+</style>
+
+<script>
+	function showLeaveForm(doctorId) {
+		document.getElementById('leave-form-' + doctorId).style.display = 'block';
+	}
+	
+	function submitLeave(event, doctorId) {
+		event.preventDefault(); // Prevent page reload
+	
+		var leaveDate = document.getElementById('leave_date_' + doctorId).value;
+	
+		if (!leaveDate) {
+			alert("Please select a leave date.");
+			return;
+		}
+	
+		fetch("/hospital_mark_leave", {
+			method: "POST",
+			body: new URLSearchParams({
+				doctor_id: doctorId,
+				leave_date: leaveDate
+			}),
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded"
+			}
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.status === "success") {
+				alert("Leave marked successfully!");
+				location.reload(); // Refresh page to update UI
+			} else {
+				alert(data.message);
+			}
+		})
+		.catch(error => console.error("Error:", error));
+	}
+	</script>
+	
+
+</center>
+{% include 'footer.html' %}

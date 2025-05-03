@@ -1,0 +1,101 @@
+{% include 'hospitals_header.html' %}
+<center>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <p><span data-typed-items="Manage Schedule" style="font-family:bold;color:white;font-size:50px">Manage Schedule</span></p>
+
+      <form method="post">
+        {% if data['up'] %}
+        <!-- Editing an existing schedule -->
+        <table class="table" style="width: 1000px; background-color: rgba(0, 0, 0, 0.7); color:white">
+            <tr>
+                <th>From Time</th>
+                <td>
+                    <input type="time" name="ft" required class="form-control" style="background-color: #00000080; color: #fff" 
+                    value="{{ data['up'][0]['ftime'][:5] }}">
+                    <select name="ft_ampm" class="form-control" style="width:100px; display:inline-block;">
+                        <option value="AM" {% if 'AM' in data['up'][0]['ftime'] %}selected{% endif %}>AM</option>
+                        <option value="PM" {% if 'PM' in data['up'][0]['ftime'] %}selected{% endif %}>PM</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>To Time</th>
+                <td>
+                    <input type="time" name="tt" required class="form-control" style="background-color: #00000080; color: #fff" 
+                    value="{{ data['up'][0]['ttime'][:5] }}">
+                    <select name="tt_ampm" class="form-control" style="width:100px; display:inline-block;">
+                        <option value="AM" {% if 'AM' in data['up'][0]['ttime'] %}selected{% endif %}>AM</option>
+                        <option value="PM" {% if 'PM' in data['up'][0]['ttime'] %}selected{% endif %}>PM</option>
+                    </select>
+                </td>
+            </tr>
+    
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="update" class="btn btn-primary" value="UPDATE">
+                </td>
+            </tr>
+        </table>
+
+        {% else %}
+        <!-- Adding a new schedule -->
+        <table class="table" style="width: 1000px; background-color: rgba(0, 0, 0, 0.7); color:white">
+            <tr>
+                <th>From Time</th>
+                <td>
+                    <input type="time" name="ft" required class="form-control">
+                    <select name="ft_ampm" class="form-control" style="width:100px; display:inline-block;">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>To Time</th>
+                <td>
+                    <input type="time" name="tt" required class="form-control">
+                    <select name="tt_ampm" class="form-control" style="width:100px; display:inline-block;">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </td>
+            </tr>
+    
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="submit" class="btn btn-primary" value="ADD">
+                </td>
+            </tr>
+        </table>
+        {% endif %}
+      </form>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+    <h1>VIEW SCHEDULES</h1>
+
+    <table class="table" style="width: 500px;">
+		<tr>
+			<th>Slno</th>
+			<th>From Time</th>
+			<th>Actions</th>
+		</tr>
+		{% for row in data['shedule'] %}
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['ftime'] }}</td>  <!-- AM/PM included -->
+			<td>
+				<a href="?action=update&shid={{ row['scheduling_id'] }}" class="btn btn-warning">UPDATE</a>
+				<a href="?action=delete&shid={{ row['scheduling_id'] }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this schedule?')">DELETE</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+	
+</center>
+{% include 'footer.html' %}

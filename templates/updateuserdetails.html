@@ -1,0 +1,66 @@
+{% include 'doctor_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+<!-- 	  <p><span  data-typed-items="Manage Diseases" style="font-family:bold;color:white;font-size:50px">DISEASE</span></p>
+ -->
+ 
+	<form method="post" style="margin-top: 2em;">
+		<h2 style="color:white;font-weight:bold">Registration Form</h2>
+	{% if data['up'] %}
+		<table>
+			<tr>
+				<td>		
+		<table class="table" style="width:500px;color:white; ">
+	
+			<tr>
+				<th>First Name</th>
+				<td><input type="text" name="fn" class="form-control" style="background-color: #00000080 ; color: #fff" required pattern="[A-za-z ]+$" value="{{data['up'][0]['first_name']}}"></td>
+			</tr>
+      <tr>
+        <th>Last Name</th>
+        <td><input type="text" name="ln" class="form-control" style="background-color: #00000080 ; color: #fff" required pattern="[A-za-z ]+$" value="{{data['up'][0]['last_name']}}"></td>
+      </tr>
+      <tr>
+        <th>DOB</th>
+        <td><input type="date" name="dob" class="form-control" style="background-color: #00000080 ; color: #fff" required value="{{data['up'][0]['dob']}}"></td>
+      </tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" name="Place" class="form-control" style="background-color: #00000080 ; color: #fff"  required pattern="[A-za-z ]+$" value="{{data['up'][0]['place']}}"></td>
+			</tr>
+      <tr>
+        <th>Gender</th>
+        <td>
+          <input type="radio" name="gen" value="Male">Male 
+          <input type="radio" name="gen" value="Female">Female
+        </td>
+      </tr>
+			<tr>
+				<th>phone</th>
+				<td><input type="text" name="phone" class="form-control"  maxlength="10" pattern="[0-9]{10}" required style="background-color: #00000080 ; color: #fff" value="{{data['up'][0]['phone']}}"></td>
+			</tr>
+			<tr>
+				<th>email</th>
+				<td><input type="email" name="email" class="form-control" style="background-color: #00000080 ; color: #fff" required required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" value="{{data['up'][0]['email']}}"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="Register" class="btn btn-primary" onClick="ValidateForm(this.form)"></td>
+			</tr>
+		</table>
+		</td>
+		
+		</tr>
+		</table>
+	</form>
+	
+{% endif %}
+
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+{% include 'footer.html' %}

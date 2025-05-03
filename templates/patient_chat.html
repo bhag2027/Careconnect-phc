@@ -1,0 +1,53 @@
+{% include 'patient_header.html' %}
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container" data-aos="zoom-in" data-aos-delay="100">
+	  <!-- <h1></h1> -->
+	  <p><span class="typed" data-typed-items="{{data['name']}}"></span></p>
+
+
+
+<form  method="post">
+
+<center>
+	
+
+	<div style="overflow-y: scroll;height: 500px"> 
+	<table style="width: 600px" class="table">
+
+		{% if data['chat'] %}
+		
+			{% for row in data['chat'] %}
+				{% if row['sender_id'] |int==data['pid'] |int %}
+					<tr>
+						<td style="width: 600px" ><h2 align="right">{{row['message']}}</h2></td>
+					</tr>
+				{% else %}
+				<tr>
+					<td style="width: 600px" bgcolor="black"><h2 align="left">{{row['message']}}</h2></td>
+				</tr>
+				{% endif %}
+			{%  endfor %}
+		
+			
+		{% endif %}
+
+		<tr>
+			<td style="width: 600px"><input type="text" name="msg" style="width: 600px" class="form-control"></td>
+			<td style="width: 200px"><input type="submit" name="submit" value="SEND" class="btn btn-warning"></td>
+		</tr>
+	</table>
+		</div>
+</center>
+</form>
+
+
+
+</div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+{% include 'footer.html' %}
